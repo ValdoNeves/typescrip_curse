@@ -69,3 +69,31 @@ function userGreeting(user:object){
 
 userGreeting(jhon)
 userGreeting(paul)
+
+// 4 - operador in
+
+class Dog {
+  name;
+  breed; //raça
+
+  constructor(name:string, breed?:string){
+    this.name = name;
+    if(breed){
+      this.breed = breed;
+    }
+  }
+}
+
+const titan = new Dog("Titan", "pugdog");
+const custelinha = new Dog("custelinha");
+
+function showDogDetails(dog:Dog){
+  if('breed' in dog){
+    console.log(`O ${dog.name} é da raça ${dog.breed}`)
+  }else{
+    console.log("não tem raça definida")
+  }
+}
+
+showDogDetails(titan)
+showDogDetails(custelinha)
