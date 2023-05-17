@@ -40,4 +40,10 @@ const fusca = {
     wheels: 4
 };
 console.log(fusca);
-// fusca.wheels = 34 // não aceita
+let coords = {
+    x: 10
+}; // aceita
+coords.y = 15; // aceita
+// coords.b = "teste" // não aceita
+coords.b = 3; // não aceita
+console.log(coords);

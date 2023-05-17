@@ -67,3 +67,20 @@ const fusca:Car = {
 console.log(fusca)
 
 // fusca.wheels = 34 // não aceita
+
+// 4 - index signature
+interface CoordObject {
+  [index: string] : number // o tipo da chave vai ser uma string não importa o nome desde que receba um numero
+}
+
+let coords : CoordObject = {
+  x: 10
+} // aceita
+
+coords.y = 15 // aceita
+
+// coords.b = "teste" // não aceita
+coords.b = 3 // não aceita
+
+
+console.log(coords)
