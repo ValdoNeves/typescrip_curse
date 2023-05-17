@@ -55,3 +55,31 @@ function mergeObjects<U, T>(obj1:U, obj2:T):U & T{
 const newObject = mergeObjects({name: "Valdo"},{age: 35, job: "programmer"});
 
 console.log(newObject)
+
+// 4 - constraint em generic function
+/**
+ * aceitando dois tipos
+ * 
+ * o T pode ser passado para mais de um valor.. ou se preferir podemos utilizar outra letra
+ * 
+ * function biggestNumber<T extends number | string, U extends number | string>(a: T, b:U) {
+ *  return a 
+ * }
+ *
+ * mas claramente utilizar uma letra nesse caso fica mais simples de entender
+ * */
+
+
+function biggestNumber<T extends number | string>(a: T, b:T):T {
+  let biggest:T
+
+  if(+a > +b){ // conversao direta para numero
+    biggest = a
+  }else{
+    biggest = b
+  }
+  return biggest
+}
+
+console.log(biggestNumber(1,5))
+console.log(biggestNumber("4","3"))
