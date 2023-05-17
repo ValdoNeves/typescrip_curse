@@ -108,3 +108,24 @@ const goku:SuperHuman = {
 console.log(eu)
 console.log(goku)
 console.log(goku.superpowers[1])
+
+// 6 - intersection types
+interface Character {
+  name: string
+}
+
+interface Gun {
+  type:string
+  calibre:number
+}
+
+type HumanWithGun = Character & Gun
+
+const arnold: HumanWithGun = {
+  name: "Arnold",
+  type: "shotgun",
+  calibre: 12
+}
+
+console.log(arnold)
+console.log(arnold.calibre)
