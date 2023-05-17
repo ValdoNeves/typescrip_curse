@@ -156,3 +156,22 @@ myArray2 = myArray2.map((item) => {
 })
 
 console.log(myArray2)
+
+// 8 - tuplas 
+
+/**
+ * é um tipo de array, porém definimos a quantidade e o tipo de elementos 
+ */
+type fiveNumbers = [number, number, number, number, number]
+
+const myNumberArray:fiveNumbers = [1,2,34,5,6]
+
+type nameAndAge = [string, number]
+
+const anotherUser:nameAndAge = ["Eu", 34]
+
+console.log(anotherUser[0])
+
+anotherUser[0] = "Valdo"
+console.log(anotherUser[0])
+console.log(anotherUser[1])

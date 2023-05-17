@@ -86,3 +86,9 @@ myArray2 = myArray2.map((item) => {
     return `valor: ${item}`;
 });
 console.log(myArray2);
+const myNumberArray = [1, 2, 34, 5, 6];
+const anotherUser = ["Eu", 34];
+console.log(anotherUser[0]);
+anotherUser[0] = "Valdo";
+console.log(anotherUser[0]);
+console.log(anotherUser[1]);
