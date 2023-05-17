@@ -66,3 +66,9 @@ function biggestNumber(a, b) {
 }
 console.log(biggestNumber(1, 5));
 console.log(biggestNumber("4", "3"));
+// 5 - especificar tipo de argumento
+function mergeArray(arr1, arr2) {
+    return arr1.concat(arr2);
+}
+console.log(mergeArray([1, 2, 3], [8, 7, 9]));
+console.log(mergeArray([1, 2, 3], ["a", "b", "c", 5]));

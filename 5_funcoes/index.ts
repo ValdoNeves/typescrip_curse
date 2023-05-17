@@ -83,3 +83,11 @@ function biggestNumber<T extends number | string>(a: T, b:T):T {
 
 console.log(biggestNumber(1,5))
 console.log(biggestNumber("4","3"))
+
+// 5 - especificar tipo de argumento
+function mergeArray<T>(arr1:T[], arr2:T[]){
+  return arr1.concat(arr2);
+}
+
+console.log(mergeArray([1,2,3],[8,7,9]))
+console.log(mergeArray<number | string>([1,2,3],["a","b","c",5]))
