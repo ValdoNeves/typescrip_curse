@@ -81,3 +81,28 @@ function modernGreeting(name, greet) {
 }
 console.log(modernGreeting("Valdo"));
 console.log(modernGreeting("Valdo", "Sr."));
+// 7 - parametro default
+/**
+ * A tipagem do m não precisa ser feita, adicionei apenas por testes
+ * afinal a tipagem é realizada por eferencia
+ **/
+function somaDefault(n, m = 10) {
+    return n + m;
+}
+console.log(somaDefault(10));
+console.log(somaDefault(10, 2));
+// 8 - unknown
+function doSomething(x) {
+    if (Array.isArray(x)) {
+        console.log(x[0] + " primeiro valor do Array");
+    }
+    // else if(Number.isFinite(x)){
+    //   console.log(x + " é um numero finito")
+    // }
+    else if (typeof (x) === 'number') {
+        console.log(x + " é um numero");
+    }
+}
+doSomething(["teste", 7, 8, 9]);
+doSomething(1.8);
+doSomething(8);
