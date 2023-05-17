@@ -25,3 +25,13 @@ const shirt = {
 };
 showProductDetails(shirt);
 showProductDetails({ name: "Calça", price: 30, isAvailable: false });
+function showUserDetails(user) {
+    console.log(`O usuário tem o e-mail: ${user.email}`);
+    if (user.role) {
+        console.log(`A funlçao do usuário é: ${user.role}`);
+    }
+}
+const u1 = { email: "valdo@email.com", role: "Admin" };
+const u2 = { email: "joao@email.com" };
+showUserDetails(u1);
+showUserDetails(u2);
