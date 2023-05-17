@@ -47,3 +47,15 @@ coords.y = 15; // aceita
 // coords.b = "teste" // não aceita
 coords.b = 3; // não aceita
 console.log(coords);
+const eu = {
+    name: "eu",
+    age: 35
+};
+const goku = {
+    name: "Goku",
+    age: 50,
+    superpowers: ["kamehameha", "Genki dama"]
+};
+console.log(eu);
+console.log(goku);
+console.log(goku.superpowers[1]);

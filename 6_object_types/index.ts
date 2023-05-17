@@ -84,3 +84,27 @@ coords.b = 3 // não aceita
 
 
 console.log(coords)
+
+// 5 - extending interfaces
+interface Human {
+  name:string
+  age: number
+}
+
+interface SuperHuman extends Human{
+  superpowers:string[]
+}
+
+const eu:Human = {
+  name: "eu",
+  age: 35
+}
+
+const goku:SuperHuman = {
+  name: "Goku",
+  age: 50,
+  superpowers: ["kamehameha", "Genki dama"]
+}
+console.log(eu)
+console.log(goku)
+console.log(goku.superpowers[1])
