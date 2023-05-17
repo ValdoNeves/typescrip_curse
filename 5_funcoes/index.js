@@ -117,3 +117,14 @@ function showErrorMessage(msg) {
 }
 //comentado apenas para não atrapalhar nos demais exemplos
 // showErrorMessage("Erro Lançado");
+// 10 - rest operator
+/**
+ * ele vai pegar todos os parametros e unir em uma lista.. apos isso podemos utilizar
+ * o reduce é somar ou fazer o que precisamos fazer com os dados
+ */
+function sumAll(...n) {
+    return n.reduce((number, sum) => sum + number);
+}
+console.log(sumAll(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1));
+console.log(sumAll(0, 54));
+// console.log(sumAll("test")) // erro
