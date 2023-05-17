@@ -30,3 +30,28 @@ function preGreeting(f: (name: string) => string, userName:string){
 }
 
 preGreeting(greeting, "Valdo");
+
+// 3 - generic function
+
+/**
+ * U e T sao patrões de nomenclatura.. com eles conseguimos
+ * limitar de certa forma o conteudo mesmo sendo generico 
+ * */
+function firstElement<T>(arr: T[]):T{
+  return arr[0]
+}
+
+console.log(firstElement([1,2,3,4,5]))
+console.log(firstElement([false,"2",3,true,5]))
+console.log(firstElement(['teste3','teste2','teste1']))
+
+function mergeObjects<U, T>(obj1:U, obj2:T):U & T{
+  return {
+    ...obj1,
+    ...obj2
+  }
+}
+
+const newObject = mergeObjects({name: "Valdo"},{age: 35, job: "programmer"});
+
+console.log(newObject)
