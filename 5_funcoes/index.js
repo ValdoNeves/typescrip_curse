@@ -106,3 +106,14 @@ function doSomething(x) {
 doSomething(["teste", 7, 8, 9]);
 doSomething(1.8);
 doSomething(8);
+// 9 - never
+/**
+ * parecido com o void, mas é utilizado para
+ * indicar um erro, pois interrompe o fluxo...
+ * normalmente utilizam o void
+ */
+function showErrorMessage(msg) {
+    throw new Error(msg);
+}
+//comentado apenas para não atrapalhar nos demais exemplos
+// showErrorMessage("Erro Lançado");
