@@ -92,3 +92,14 @@ console.log(anotherUser[0]);
 anotherUser[0] = "Valdo";
 console.log(anotherUser[0]);
 console.log(anotherUser[1]);
+// 9 - tuplas readonly
+/**
+ * tuplas normalmente não podem ser modificadas em termos de adicionar um elemento novo
+ * normalmente tuplas já são utilizados com a intensão de apenas leitura, mas podemos deixar
+ * isso previsto no codigo
+ */
+function showNumbers(numbers) {
+    console.log(numbers[0]);
+    console.log(numbers[1]);
+}
+showNumbers([1, 5]);
