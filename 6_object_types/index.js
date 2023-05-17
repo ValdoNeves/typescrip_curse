@@ -66,3 +66,23 @@ const arnold = {
 };
 console.log(arnold);
 console.log(arnold.calibre);
+// 7 - readonly array
+let myArray = ["Eu", "tu", "eles"];
+myArray[3] = "elas";
+console.log(myArray);
+let myArray2 = ["teste1", "teste2"];
+// myArray2[2] = "novoTeste" // não é possivel
+console.log(myArray2[0]);
+console.log(myArray2[1]);
+/**
+ * as modificações não podem ser feitas diretamente.. apenas por metodos
+ */
+//iteração com os valores de cada item
+myArray2.forEach((item) => {
+    console.log(`Valor: ${item}`);
+});
+// pode ser alterado dessa forma
+myArray2 = myArray2.map((item) => {
+    return `valor: ${item}`;
+});
+console.log(myArray2);
