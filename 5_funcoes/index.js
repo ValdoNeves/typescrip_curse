@@ -72,3 +72,12 @@ function mergeArray(arr1, arr2) {
 }
 console.log(mergeArray([1, 2, 3], [8, 7, 9]));
 console.log(mergeArray([1, 2, 3], ["a", "b", "c", 5]));
+// 6 - parametros opcionais
+function modernGreeting(name, greet) {
+    if (greet) {
+        return `Olá ${greet} ${name}, tudo bem?`;
+    }
+    return `Olá ${name}, tudo bem?`;
+}
+console.log(modernGreeting("Valdo"));
+console.log(modernGreeting("Valdo", "Sr."));
