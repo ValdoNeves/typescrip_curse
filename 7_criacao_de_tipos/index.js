@@ -60,3 +60,4 @@ const newCar = {
 };
 showKm(newTruck.km);
 showKm(newCar.km);
+const someVar = 5; // como B herda de A essa linha esta OK

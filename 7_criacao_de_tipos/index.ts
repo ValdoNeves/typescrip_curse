@@ -107,3 +107,21 @@ const newCar = {
 
 showKm(newTruck.km)
 showKm(newCar.km)
+
+// 8 - conditional types
+interface A {}
+
+interface B extends A {}
+
+interface Teste {
+  showName():string // recebe um metodo showName que retorna uma string
+}
+
+type myType = B extends A ? number: string
+
+const someVar:myType = 5 // como B herda de A essa linha esta OK
+// const someVar2:myType = "teste" // não funciona pq no if definimos que tem que ser um number
+
+type myTypeTeste = Teste extends {showNumber():number} ? string : boolean // nesse caso o tipo será boolean
+type myTypeTeste2 = Teste extends {showName():string} ? string : boolean // nesse caso o tipo será string
+
