@@ -256,3 +256,41 @@ console.log(newShirt.name);
 // console.log(newShirt.price()) // nao pode ser visto por ser private
 console.log(newShirt.showPrice);
 console.log(newShirt.showQty);
+// 17 - class expressions
+/**
+ * criando classes anonimas e atribuindo a variaveis
+ */
+const myClass = class {
+    constructor(name) {
+        this.name = name;
+    }
+};
+const pessoa = new myClass("Joel");
+console.log(pessoa);
+console.log(pessoa.name);
+// 18 - abstract class
+class AbstractClass {
+}
+// const newObj = new AbstractClass()// erro
+class AbstractExample extends AbstractClass {
+    constructor(name) {
+        super();
+        this.name = name;
+    }
+    get getName() {
+        return `GET - O nome é ${this.name}`;
+    }
+    showName() {
+        console.log(`O nome é ${this.name}`);
+    }
+}
+const newAbstract = new AbstractExample("Eu mesmo");
+console.log(newAbstract.getName);
+newAbstract.showName();
+// 19 - curiosidade, relacao entre classes
+class Dog {
+}
+class Cat {
+}
+const doguinho = new Cat(); // isso é possivel pq ele verifica o escopo internamente e não o nome das classes
+console.log(doguinho);

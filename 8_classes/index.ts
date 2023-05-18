@@ -360,3 +360,64 @@ console.log(newShirt.name)
 
 console.log(newShirt.showPrice)
 console.log(newShirt.showQty)
+
+// 17 - class expressions
+/**
+ * criando classes anonimas e atribuindo a variaveis
+ */
+
+const myClass = class<T> {
+  name
+
+  constructor(name:T){
+    this.name = name
+  }
+}
+
+const pessoa = new myClass("Joel")
+
+console.log(pessoa)
+console.log(pessoa.name)
+
+// 18 - abstract class
+abstract class AbstractClass {
+  abstract get getName():string;
+  abstract showName():void;
+}
+
+// const newObj = new AbstractClass()// erro
+
+class AbstractExample extends AbstractClass{
+  name:string
+
+  constructor(name:string){
+    super()
+    this.name = name
+  }
+
+  get getName(){
+    return `GET - O nome é ${this.name}`
+  }
+
+  showName(): void {
+    console.log(`O nome é ${this.name}`)
+  }
+}
+
+const newAbstract = new AbstractExample("Eu mesmo")
+
+console.log(newAbstract.getName)
+newAbstract.showName()
+
+// 19 - curiosidade, relacao entre classes
+class Dog {
+  name !: string
+}
+
+class Cat {
+  name !: string
+}
+
+const doguinho:Dog = new Cat() // isso é possivel pq ele verifica o escopo internamente e não o nome das classes
+
+console.log(doguinho)
