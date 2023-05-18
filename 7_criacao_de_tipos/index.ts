@@ -125,3 +125,15 @@ const someVar:myType = 5 // como B herda de A essa linha esta OK
 type myTypeTeste = Teste extends {showNumber():number} ? string : boolean // nesse caso o tipo será boolean
 type myTypeTeste2 = Teste extends {showName():string} ? string : boolean // nesse caso o tipo será string
 
+// 9 - template literals type
+type TestA = "text"
+
+type CustomType = `Some ${TestA}`
+
+const testing:CustomType = 'Some text' // o valor tem que ser exatamente o descrito no CustomType OK
+// const testing2:CustomType = 'text' // o valor tem que ser exatamente o descrito no CustomType erro
+
+type a1 = "Testando"
+type a2 = "Union"
+
+type a3 = `${a1}` |`${a2}` // ou o texto do a1 ou do a2
