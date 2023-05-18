@@ -32,3 +32,13 @@ const server = {
     ram: "32GB"
 };
 console.log(getSomeKey(server, 'hd'));
+function showCharName(obj, key) {
+    return (`${obj[key]}`);
+}
+const myChar = {
+    name: "Eu mesmo",
+    age: 45,
+    hasDriveLicense: true
+};
+console.log(showCharName(myChar, 'name'));
+// console.log(showCharName(myChar, 'teste')) // não funciona
