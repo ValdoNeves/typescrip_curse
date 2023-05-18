@@ -84,3 +84,26 @@ const userName2:typeof userName = "teste"
 // tambem podemos declar como um type
 type novaVariavel = typeof userName
 const userName4: novaVariavel = "novo Teste"
+
+// 7 - indexed access type
+type Truck = {km:number, kg:number, description:string}
+
+type km = Truck['km']
+
+const newTruck: Truck = {
+  km: 1000,
+  kg: 5000,
+  description: "caminhão para pouca carga"
+}
+
+function showKm(km:km){
+  console.log(`O veiculo tem a km de: ${km}`)
+}
+
+const newCar = {
+  km: 500,
+  kg: 1000
+}
+
+showKm(newTruck.km)
+showKm(newCar.km)
