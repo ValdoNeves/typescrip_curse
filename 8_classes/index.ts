@@ -46,3 +46,28 @@ class Car {
 
 const fusca = new Car("Fusca");
 console.log(fusca) // posso verificar a qtd de rodas pois o valor ja foi definido
+
+// 4 - herança e super
+class Machine {
+  name
+
+  constructor(name:string){
+    this.name = name
+  }
+}
+
+const trator = new Machine("Trator");
+
+class KillerMachine extends Machine {
+  guns
+
+  constructor(name:string, guns:number){
+    super(name)
+    this.guns = guns
+  }
+}
+
+const destroyer = new KillerMachine("Destroyer", 5)
+
+console.log(trator)
+console.log(destroyer)
