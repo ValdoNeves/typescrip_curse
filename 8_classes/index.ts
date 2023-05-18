@@ -291,3 +291,72 @@ console.log(pObj.showName)
 pObj.showMetodoPrivado()
 
 // console.log(pObj.name) // não funciona
+
+// 14 - static members
+/**
+ * sao metodos ou variaveis que podem ser utilizadas sem a necessidade
+ * de serem instanciadas ou seja de uma forma mais 'solta/livre'
+ */
+
+class StaticMembers {
+  static props = "teste static"
+  static staticMethod(){
+    console.log("Este é um método estático!")
+  }
+}
+
+console.log(StaticMembers.props)
+StaticMembers.staticMethod()
+
+// 15 - generec class
+class Item<T,U> {
+  first
+  second
+
+  constructor(first: T, second: U){
+    this.first = first
+    this.second = second
+  }
+
+  get showFirst(){
+    return `O first é: ${this.first}`
+  }
+}
+
+const newItem = new Item("caixa", "surpresa")
+
+console.log(newItem)
+
+console.log(newItem.showFirst)
+console.log(typeof newItem.first)
+
+const secondItem = new Item(34, "teste")
+
+console.log(secondItem)
+
+console.log(typeof secondItem.first)
+
+// 16 - parameters properties
+class ParameterProperties {
+  constructor (public name: string, private qty: number, private price: number){
+    this.name = name
+    this.qty = qty
+    this.price = price
+  }
+
+  get showQty(){
+    return `Qtd total: ${this.qty}`
+  }
+
+  get showPrice(){
+    return `price: ${this.price}`
+  }
+}
+
+const newShirt = new ParameterProperties("Camisa",5, 49.99)
+
+console.log(newShirt.name)
+// console.log(newShirt.price()) // nao pode ser visto por ser private
+
+console.log(newShirt.showPrice)
+console.log(newShirt.showQty)
