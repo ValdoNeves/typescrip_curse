@@ -11,3 +11,12 @@ const eu = new User();
 console.log(eu); // exibe uma estrutura como um tipo de objeto pois não temos dados
 eu.name = "valdo";
 console.log(eu); // agora exibe um objeto e dentro dele uma chava 'name' com um valor
+// 2 - constructor
+class NewUser {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+const joao = new NewUser("João", 23);
+console.log(joao);
