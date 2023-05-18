@@ -119,3 +119,36 @@ myCoords.fillX = 4;
 myCoords.fillY = -4;
 console.log(myCoords);
 console.log(myCoords.getCoords);
+class BlogPost {
+    constructor(title) {
+        this.title = title;
+    }
+    itemTitle() {
+        return `O titulo do post é ${this.title}`;
+    }
+}
+const myPost = new BlogPost('Hello World');
+console.log(myPost.itemTitle());
+class TestingInterface {
+    constructor(title) {
+        this.title = title;
+    }
+    itemTitle() {
+        return `O titulo do teste foi ${this.title}`;
+    }
+}
+const myTesting = new TestingInterface('Novo Teste');
+console.log(myTesting.itemTitle());
+// 10 - override de métodos 
+class Base {
+    someMethod() {
+        console.log("Alguma coisa");
+    }
+}
+class Nova extends Base {
+    someMethod() {
+        console.log("Testando outra coisa");
+    }
+}
+const myObject = new Nova();
+myObject.someMethod();

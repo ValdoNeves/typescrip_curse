@@ -175,3 +175,56 @@ myCoords.fillY = -4
 console.log(myCoords)
 
 console.log(myCoords.getCoords)
+
+// 9 - implements
+interface ShowTitle {
+  itemTitle():string
+}
+
+class BlogPost implements ShowTitle{
+  title
+
+  constructor(title: string){
+    this.title = title
+  }
+
+  itemTitle(): string {
+    return `O titulo do post é ${this.title}`
+  }
+}
+
+const myPost = new BlogPost('Hello World')
+
+console.log(myPost.itemTitle())
+
+class TestingInterface implements ShowTitle{
+  title
+
+  constructor(title:string){
+    this.title = title
+  }
+
+  itemTitle(): string {
+    return `O titulo do teste foi ${this.title}`
+  }
+}
+
+const myTesting = new TestingInterface('Novo Teste')
+
+console.log(myTesting.itemTitle())
+
+// 10 - override de métodos 
+class Base{
+  someMethod(){
+    console.log("Alguma coisa")
+  }
+}
+class Nova extends Base{
+  someMethod(): void {
+    console.log("Testando outra coisa")
+  }
+}
+
+const myObject = new Nova()
+
+myObject.someMethod()
