@@ -71,3 +71,62 @@ const destroyer = new KillerMachine("Destroyer", 5)
 
 console.log(trator)
 console.log(destroyer)
+
+// 5 - metodos 
+class Dwarf{
+  name
+
+  constructor(name:string){
+    this.name = name
+  }
+
+  greeting(){
+    console.log("Hey stranger!")
+  }
+}
+
+const jimmy = new Dwarf("jimmy")
+
+console.log(jimmy.name)
+jimmy.greeting()
+
+// 6 - this
+class Truck {
+  name
+  hp
+
+  constructor(name:string,hp:number){
+    this.name = name
+    this.hp = hp
+  }
+
+  showDetails(){
+    console.log(`O caminhão é do modelo ${this.name}, e tem ${this.hp} cavalos de potência.`)
+  }
+}
+
+const volvo = new Truck("Volvo", 400)
+const scania = new Truck("Scania", 500)
+
+volvo.showDetails()
+scania.showDetails()
+
+// 7 - getters
+class Person{
+  name
+  surname
+
+  constructor(name:string,surname:string){
+    this.name = name
+    this.surname = surname
+  }
+
+  get fullname(){
+    return this.name + " " + this.surname
+  }
+}
+
+const jaoasilva = new Person("João", "Silva")
+
+console.log(jaoasilva.name)
+console.log(jaoasilva.fullname)
