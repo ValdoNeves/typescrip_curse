@@ -84,3 +84,38 @@ class Person {
 const jaoasilva = new Person("João", "Silva");
 console.log(jaoasilva.name);
 console.log(jaoasilva.fullname);
+// 7 - setter 
+class Coords {
+    set fillX(x) {
+        if (x < 0) {
+            console.log("X não foi inserido");
+            return;
+        }
+        this.x = x;
+        console.log("X inserido com sucesso");
+    }
+    set fillY(y) {
+        if (y < 0) {
+            console.log("Y não foi inserido");
+            return;
+        }
+        this.y = y;
+        console.log("Y inserido com sucesso");
+    }
+    get getCoords() {
+        if (this.x > 0 && this.y > 0) {
+            return `X: ${this.x} e Y: ${this.y}`;
+        }
+        else if (this.y) {
+            return `X: não preenchido e Y: ${this.y}`;
+        }
+        else {
+            return `X: ${this.x} e Y: não preenchido`;
+        }
+    }
+}
+const myCoords = new Coords();
+myCoords.fillX = 4;
+myCoords.fillY = -4;
+console.log(myCoords);
+console.log(myCoords.getCoords);
