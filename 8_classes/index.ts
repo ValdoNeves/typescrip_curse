@@ -32,3 +32,17 @@ class NewUser{
 const joao = new NewUser("João", 23);
 
 console.log(joao)
+
+// 3 - campo readonly
+
+class Car {
+  name
+  readonly wheels = 4
+
+  constructor(name:string){
+    this.name = name
+  }
+}
+
+const fusca = new Car("Fusca");
+console.log(fusca) // posso verificar a qtd de rodas pois o valor ja foi definido
