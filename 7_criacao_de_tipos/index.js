@@ -18,3 +18,17 @@ const myCar = { name: "Fusca", wheels: 4, engine: 1.3, color: "preto" };
 const myPen = { name: "Caneta", wheels: false, engine: false, color: "azul" };
 console.log(myCar);
 console.log(myPen);
+// 4 - type parameters
+/**
+ * é uma forma de indicar que um parametro é a chave de outro parametro
+ * ou seja passamos um objeto que tem varias chaves, e verificamos se a chave existe se existir
+ * podemos passar o valor que essa chave tem.. e não podemos passar uma chave que não existe dentro do objeto
+ */
+function getSomeKey(obj, key) {
+    return `A chave ${key.toString()} esta presente no objeto e tem o valor de ${obj[key]}`;
+}
+const server = {
+    hd: "2TB",
+    ram: "32GB"
+};
+console.log(getSomeKey(server, 'hd'));
