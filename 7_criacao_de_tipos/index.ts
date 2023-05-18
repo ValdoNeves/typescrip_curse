@@ -74,3 +74,13 @@ const myChar: Character = {
 
 console.log(showCharName(myChar, 'name'))
 // console.log(showCharName(myChar, 'teste')) // não funciona
+
+// 6 - typeof type operator
+const userName:string = "Valdo"
+
+const userName2:typeof userName = "teste"
+// const userName3:typeof userName = 34 // erro por ser um tipo string
+
+// tambem podemos declar como um type
+type novaVariavel = typeof userName
+const userName4: novaVariavel = "novo Teste"
