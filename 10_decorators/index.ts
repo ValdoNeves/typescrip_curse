@@ -181,6 +181,7 @@ function createdDate(created:Function){
 @createdDate
 class Book {
   id
+  createdAt?:Date; // criando a variavel localmente p/ ter acesso a data, não apenas no decorator
 
   constructor(id:number){
     this.id = id
@@ -197,3 +198,5 @@ class Pen {
 
 const newBook = new Book(12)
 const newPen = new Pen(5)
+
+console.log(newBook.createdAt)

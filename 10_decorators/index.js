@@ -169,3 +169,4 @@ Pen = __decorate([
 ], Pen);
 const newBook = new Book(12);
 const newPen = new Pen(5);
+console.log(newBook.createdAt);
