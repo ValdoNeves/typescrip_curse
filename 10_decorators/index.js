@@ -170,3 +170,37 @@ Pen = __decorate([
 const newBook = new Book(12);
 const newPen = new Pen(5);
 console.log(newBook.createdAt);
+// 8 - exemplo real method decorator
+function checkIfUserPosted() {
+    return function (target, key, descriptor) {
+        //verificando se usuario ja postou ou não
+        const childFunction = descriptor.value; // pega a função completa
+        console.log(childFunction);
+        descriptor.value = function (...args) {
+            if (args[1] === true) {
+                console.log("Usuário já postou"); // se postou retorna null
+                return null;
+            }
+            else {
+                // executar a função
+                return childFunction.apply(this, args); // pego afunção e aplico ela novamente com os argumentos dela
+            }
+        };
+        return descriptor;
+    };
+}
+class Post {
+    constructor() {
+        this.alreadyPosted = false;
+    }
+    post(content, alreadyPosted) {
+        this.alreadyPosted = true;
+        console.log(`O post do usuário: ${content}`);
+    }
+}
+__decorate([
+    checkIfUserPosted()
+], Post.prototype, "post", null);
+const newPost = new Post();
+newPost.post("Esse é o novo post", newPost.alreadyPosted);
+newPost.post("Esse é o novo post", newPost.alreadyPosted); // não podemos postar novamente a mesma coisa o decorator ira barrar isso
