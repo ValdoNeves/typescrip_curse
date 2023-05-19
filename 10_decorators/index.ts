@@ -233,3 +233,41 @@ const newPost = new Post()
 
 newPost.post("Esse é o novo post", newPost.alreadyPosted)
 newPost.post("Esse é o novo post", newPost.alreadyPosted) // não podemos postar novamente a mesma coisa o decorator ira barrar isso
+
+// 9 - exemplo real property decorator
+
+function Max(limit:number){
+  return function(target:Object, propertyKey: string){
+    let value: string
+
+    const getter = function(){
+      return value;
+    }
+
+    const setter = function(newVal:string){
+      if(newVal.length > limit){
+        console.log(`O nome ${newVal} não pode ser aceito, o nome deviria ter no máximo ${limit} digitos.`)
+      }else{
+        console.log(`O nome digitado foi ${newVal}`)
+        value = newVal
+      }
+    }
+
+    Object.defineProperty(target, propertyKey, {
+      get: getter,
+      set: setter
+    })
+  }
+}
+
+class Admin{
+  @Max(5)
+  username
+
+  constructor(username:string){
+    this.username = username
+  }
+}
+
+const newUSer = new Admin("Valdo")
+const newUSer2 = new Admin("Vald1o1")
