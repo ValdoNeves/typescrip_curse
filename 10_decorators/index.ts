@@ -167,3 +167,33 @@ class ID {
 const newItem = new ID("1")
 
 console.log(newItem)
+
+// 7 - exemplo real com class decorator
+
+/**
+ * classes criadas imagine que precisamos definir o momento da criação
+ * podemos criar um decorator que irá fazer isso por nós
+ */ 
+function createdDate(created:Function){
+  created.prototype.createdAt = new Date()
+}
+
+@createdDate
+class Book {
+  id
+
+  constructor(id:number){
+    this.id = id
+  }
+}
+@createdDate
+class Pen {
+  id
+
+  constructor(id:number){
+    this.id = id
+  }
+}
+
+const newBook = new Book(12)
+const newPen = new Pen(5)
