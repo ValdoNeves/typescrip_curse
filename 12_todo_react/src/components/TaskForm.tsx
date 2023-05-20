@@ -8,10 +8,11 @@ import { ITask } from '../interfaces/Task'
 
 
 interface Props {
-  btnText: string
+  btnText: string;
+  taskList: ITask[]
 }
 
-const TaskForm = ({ btnText }: Props) => {
+const TaskForm = ({ btnText, taskList }: Props) => {
 
   const [id, setId] = useState<number>(0);
   const [title, setTitle] = useState<string>("");
