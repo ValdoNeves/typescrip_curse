@@ -1,13 +1,31 @@
 import React from 'react';
+
+//css
+import styles from './App.module.css'
+
+//components
 import Header from './components/Header';
 import Footer from './components/Footer';
-import styles from './App.module.css'
+import TaskForm from './components/TaskForm';
+import TaskList from './components/TaskList';
+
+// interface
+import {ITask} from './interfaces/Task'
 
 function App() {
   return (
     <div>
       <Header/>
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        <div>
+          <h2>O que vocês vai fazer?</h2>
+          <TaskForm btnText="Criar Tarefa"/>
+        </div>
+        <div>
+          <h2>Suas tarefas:</h2>
+          <TaskList/>
+        </div>
+      </main>
       <Footer/>
     </div>
   );
