@@ -3,6 +3,7 @@ import FirstComponent from './components/FirstComponent'
 import SecondComponent from './components/SecondComponent';
 import Destructuring, { category } from './components/Destructuring';
 import State from './components/State';
+import Context from './components/Context';
 
 // criando types
 type textOrNull = string | null
@@ -82,6 +83,9 @@ function App() {
         <p>texto fixo 3: {myText3}</p>
         <p>texto fixo 4: {myText4}</p>
         <p>texto fixo 5: {myText5}</p>
+        ----------
+
+        <Context/>
       </div>
     </AppContext.Provider>
 
