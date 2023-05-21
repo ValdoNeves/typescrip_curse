@@ -2,7 +2,7 @@
 // console.log("Express + TS")
 
 // 2 - init express
-import  express, {NextFunction, Request, Response} from "express";
+import express, { NextFunction, Request, Response } from "express";
 
 const app = express();
 
@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json()) // habilitando json
 
 // 11 - middleware para todas as rotas
-function showPath(req:Request, res:Response, next: NextFunction){
+function showPath(req: Request, res: Response, next: NextFunction) {
   console.log(req.path);
   next()
 }
@@ -31,10 +31,10 @@ app.post("/api/product", (req, res) => {
 app.all("/api/product/check", (req, res) => {
   // verificando qual foi o metodo recebido
   // req.method = verbo HTTP
-  if(req.method === "POST"){
+  if (req.method === "POST") {
     return res.send("inseriu algum registo")
   }
-  else if(req.method === "GET"){
+  else if (req.method === "GET") {
     return res.send("Leu algum registro")
   }
   else {
@@ -43,12 +43,12 @@ app.all("/api/product/check", (req, res) => {
 })
 
 // 5 - interface do express
-app.get("/api/interfaces", (req:Request, res: Response) => {
+app.get("/api/interfaces", (req: Request, res: Response) => {
   return res.send("utilizando as interfaces!")
 })
 
 // 6 - enviando json
-app.get("/api/json", (req:Request, res:Response) => {
+app.get("/api/json", (req: Request, res: Response) => {
 
   return res.json({
     "nome": "Shirt",
@@ -61,26 +61,26 @@ app.get("/api/json", (req:Request, res:Response) => {
 })
 
 // 7 - router parameters
-app.get("/api/product/:id", (req:Request, res: Response) => {
+app.get("/api/product/:id", (req: Request, res: Response) => {
 
   console.log(req.params);
 
   const id = req.params.id
 
-  if(id === "1"){
+  if (id === "1") {
     const product = {
       id: 1,
       name: "boné",
       price: 10,
     }
     res.json(product)
-  }else{
+  } else {
     res.send("produto não encontrado 404")
   }
 })
 
 // 8 - rodas complexas 
-app.get("/api/product/:id/review/:reviewId", (req:Request, res: Response) => {
+app.get("/api/product/:id/review/:reviewId", (req: Request, res: Response) => {
   console.log(req.params)
 
   const productId = req.params.id
@@ -91,7 +91,7 @@ app.get("/api/product/:id/review/:reviewId", (req:Request, res: Response) => {
 })
 
 // 9 - router handler
-function getUser(req:Request, res:Response){
+function getUser(req: Request, res: Response) {
   console.log(`Resgatando o usuário com o id ${req.params.id}`)
 
   res.send("O usuário foi encontrado")
@@ -99,20 +99,41 @@ function getUser(req:Request, res:Response){
 app.get("/api/user/:id", getUser)
 
 // 10 - middleware
-function checkUser(req:Request, res:Response, next: NextFunction){
-  if(req.params.id === "1"){
+function checkUser(req: Request, res: Response, next: NextFunction) {
+  if (req.params.id === "1") {
     console.log("Pode seguir!")
     next()
-  }else{
+  } else {
     console.log("Acesso negado!")
     res.send("Acesso Negado!")
   }
 }
 
-app.get("/api/user/:id/access", checkUser, (req:Request, res:Response) => {
+app.get("/api/user/:id/access", checkUser, (req: Request, res: Response) => {
   res.send("Bem vindo a área administrativa!")
 })
 
+// 12 - req e res com generics
+
+app.get("/api/user/:id/details/:name",
+  (req: Request<{ id: string, name: string }>,
+    res: Response<{ status: boolean }>) => {
+    console.log(`ID: ${req.params.id}`)
+    console.log(`Name: ${req.params.name}`)
+
+    res.json({ "status": true })
+  })
+
+// 13 - tratando erros
+app.get("/api/error", (req:Request, res:Response) => {
+  try {
+    // a logica a ser realizada, no caso apenas iremos lançar um erro
+    throw new Error("Algo deu errado!")
+  } catch (e: any) { // e é um tipo desconhecido, pois nao sabemos que tipo de erro pode ocorrer
+    // com o erro iremos cair no cathc
+    res.status(500).json({msg: e.message})
+  }
+})
 
 app.listen(3000, () => {
   console.log("Aplicação de TS + Express funcionando!");
