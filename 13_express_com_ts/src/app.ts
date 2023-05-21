@@ -2,12 +2,20 @@
 // console.log("Express + TS")
 
 // 2 - init express
-import  express, {Request, Response} from "express";
+import  express, {NextFunction, Request, Response} from "express";
 
 const app = express();
 
 // 3 - rota com Post
 app.use(express.json()) // habilitando json
+
+// 11 - middleware para todas as rotas
+function showPath(req:Request, res:Response, next: NextFunction){
+  console.log(req.path);
+  next()
+}
+
+app.use(showPath)
 
 app.get("/", (req, res) => {
   return res.send("Hello Express!!")
@@ -78,10 +86,31 @@ app.get("/api/product/:id/review/:reviewId", (req:Request, res: Response) => {
   const productId = req.params.id
   const reviewId = req.params.reviewId
 
-
-
   res.send(`Acessando a review ${reviewId} do produto ${productId}`)
 
+})
+
+// 9 - router handler
+function getUser(req:Request, res:Response){
+  console.log(`Resgatando o usuário com o id ${req.params.id}`)
+
+  res.send("O usuário foi encontrado")
+}
+app.get("/api/user/:id", getUser)
+
+// 10 - middleware
+function checkUser(req:Request, res:Response, next: NextFunction){
+  if(req.params.id === "1"){
+    console.log("Pode seguir!")
+    next()
+  }else{
+    console.log("Acesso negado!")
+    res.send("Acesso Negado!")
+  }
+}
+
+app.get("/api/user/:id/access", checkUser, (req:Request, res:Response) => {
+  res.send("Bem vindo a área administrativa!")
 })
 
 
