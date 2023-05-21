@@ -18,6 +18,24 @@ export async function createMovie(req:Request, res:Response){
     res.status(500).send(e)
 
   }
+}
+
+export async function findMovieById(req:Request,res:Response) {
   
-  // return res.status(200).send("Deu certo o controller");
+  try{
+    
+    const id = req.params.id
+    const movie = await MovieModel.findById(id);
+
+    if(!movie){
+      return res.status(404).json({error: "Filme não encontrado!"})
+    }
+
+    return res.status(200).json(movie);
+
+  } catch (e:any) {
+    Logger.error(`Erro no sistema: ${e.message}`)
+    res.status(500).send(e)
+
+  }
 }
