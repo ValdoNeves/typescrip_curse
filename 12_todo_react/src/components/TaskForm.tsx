@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 
 // CSS
 import styles from './TaskForm.module.css'
@@ -10,37 +10,54 @@ import { ITask } from '../interfaces/Task'
 interface Props {
   btnText: string;
   taskList: ITask[];
-  setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>
+  setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>;
+  task?: ITask | null;
+  handleUpdate?(id:number, title:string, difficulty:number): void;
 }
 
-const TaskForm = ({ btnText, taskList, setTaskList}: Props) => {
+const TaskForm = ({ btnText, taskList, setTaskList, task, handleUpdate }: Props) => {
 
   const [id, setId] = useState<number>(0);
   const [title, setTitle] = useState<string>("");
   const [difficulty, setDifficulty] = useState<number>(0);
 
-  const addTaskHandler = (e:FormEvent<HTMLFormElement>) => {
+  useEffect(() => {
+    if (task) {
+      setId(task.id)
+      setTitle(task.title)
+      setDifficulty(task.difficulty)
+    } else {
+
+    }
+  }, [task])
+
+  const addTaskHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // não esta mais recarregando a tela quando acontece o clique no botão
-    const id = Math.floor(Math.random() * 1000);
+    if (handleUpdate) {
+      handleUpdate(id,title,difficulty)
 
-    const newTask: ITask = {id, title, difficulty}
+    } else {
+      const id = Math.floor(Math.random() * 1000);
 
-    // setTaskList([...taskList, newTask]) // assim ele reclama que pode estar vazio esse valor
-    setTaskList!([...taskList, newTask]) // assim forçamos ele a entender que o valor vai vir
-    
-    // limpa os campos 
-    setTitle("")
-    setDifficulty(0)
+      const newTask: ITask = { id, title, difficulty }
 
-    console.log(taskList)
+      // setTaskList([...taskList, newTask]) // assim ele reclama que pode estar vazio esse valor
+      setTaskList!([...taskList, newTask]) // assim forçamos ele a entender que o valor vai vir
+
+      // limpa os campos 
+      setTitle("")
+      setDifficulty(0)
+
+      console.log(taskList)
+    }
 
   }
 
-  const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     // os valores vem no formato de string    
-    if(e.target.name === "title"){
+    if (e.target.name === "title") {
       setTitle(e.target.value)
-    }else{
+    } else {
       setDifficulty(parseInt(e.target.value))
     }
 
@@ -52,20 +69,20 @@ const TaskForm = ({ btnText, taskList, setTaskList}: Props) => {
     <form onSubmit={addTaskHandler} className={styles.form}>
       <div className={styles.input_container}>
         <label htmlFor="title">Título:</label>
-        <input 
-          type="text" 
-          name="title" 
-          placeholder="Título da tarefa" 
+        <input
+          type="text"
+          name="title"
+          placeholder="Título da tarefa"
           onChange={handleChange}
           value={title}
         />
       </div>
       <div className={styles.input_container}>
         <label htmlFor="difficulty">Dificuldade:</label>
-        <input 
-          type="text" 
-          name="difficulty" 
-          placeholder="Dificuldade da tarefa" 
+        <input
+          type="text"
+          name="difficulty"
+          placeholder="Dificuldade da tarefa"
           onChange={handleChange}
           value={difficulty}
 
