@@ -7,6 +7,9 @@ import config from "config"
 //import Routes
 import router from './router'
 
+//import Logs
+import Logger from "../config/logger";
+
 // DB
 import db from '../config/db'
 
@@ -21,5 +24,8 @@ app.use("/api/", router);
 
 app.listen(PORT, async() => {
   await db();
-  console.log(`Aplicação funcionando na porta: ${PORT}`);
+  // com o arquivo logger configurado posso substituir o console log por logger 
+  // e definir o tipo de situação no caso abaixo é uma informação ou seja info
+  // console.log(`Aplicação funcionando na porta: ${PORT}`);
+  Logger.info(`Aplicação funcionando na porta: ${PORT}`);
 })
