@@ -15,3 +15,8 @@ npm install @types/express @types/node ts-node-dev typescript --save-dev
 ~~~
 npm install express
 ~~~
+
+> Adicionando transpilação para javaScript e rodando o código
+~~~
+"dev": "ts-node-dev --respawn --transpile-only src/app.ts"
+~~~
