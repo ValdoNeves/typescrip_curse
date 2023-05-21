@@ -10,6 +10,9 @@ import router from './router'
 //import Logs
 import Logger from "../config/logger";
 
+//import middleware
+import morganMiddleware from "./middleware/morganMiddleware";
+
 // DB
 import db from '../config/db'
 
@@ -20,6 +23,7 @@ const PORT:number = config.get<number>('port');
 
 //JSON middleware
 app.use(express.json());
+app.use(morganMiddleware);
 app.use("/api/", router);
 
 app.listen(PORT, async() => {
